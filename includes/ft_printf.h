@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/31 08:50:33 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/08/05 00:51:45 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/08/05 22:59:38 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,17 @@ enum e_flag_len
 	FLAG_LEN_Z
 };
 
+typedef struct			s_flag_char
+{
+	char				key[5];
+	int					flag[5];
+}						t_flag_char;
+
 typedef struct			s_format
 {
 	int					fieldwidth;
 	int					precison;
-	char				flag_char;
+	t_flag_char			flag_char;
 	enum e_flag_len		flag_len;
 	char				flag_convert;
 }						t_format;
