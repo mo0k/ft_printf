@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 17:07:12 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/08/05 01:03:21 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/08/05 22:35:20 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static int		get_format(char **begin, char **end, t_buffer_malloc *mbuff, va_list
 		ft_putendlcolor("return (0)", C_RED);
 		return (0);
 	}
-	while (**end && !ft_strchr(FLAG_CONVERT, **end))
+	//remplacer !ft_strchr(FLAG_CONVERT, **end) par ft_isalpha()
+	//while (**end && !ft_strchr(FLAG_CONVERT, **end))
+	while (**end && !ft_isalpha(**end))
 		++(*end);
 	if (**end)
 		++(*end);
