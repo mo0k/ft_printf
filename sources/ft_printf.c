@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 17:07:12 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/08/13 00:30:04 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/08/13 01:22:44 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static int		check_format(char **aptr)
 		{
 			printf("ft_isdigit || '.'\n");
 			++(*aptr);
-			state = 1;
 		}
 		else if ((ptr = ft_strchr(FLAG_CONVERT, **aptr)) && (state = 1))
 		{
@@ -100,6 +99,11 @@ static int		get_format(char **begin, char **end, t_buffer_malloc *mbuff, va_list
 	}
 	ft_putendlcolor("DEBUG end get_format _______________________________", C_MAGENTA);
 	printf("**end:%d, char:'%c'\n", **end, **end);
+	if (*end - *begin > BUFF_SIZE_INIT)
+	{
+		*begin = *end;
+		return (0);
+	}
 	if (!**end)
 	{
 		ft_putstr("strcpy\n");
