@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/31 08:50:33 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/08/05 22:59:38 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/08/11 23:52:38 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 #define FLAG_CHAR "#0-+ "
 #define FLAG_CONVERT "sSpdDioOuUxXcC"
 
-enum e_flag_len
+enum e_flag_mlen
 {
-	FLAG_LEN_NODEF,
-	FLAG_LEN_HH,
-	FLAG_LEN_H,
-	FLAG_LEN_LL,
-	FLAG_LEN_L,
-	FLAG_LEN_J,
-	FLAG_LEN_Z
+	FLAG_MLEN_NODEF,
+	FLAG_MLEN_HH,
+	FLAG_MLEN_H,
+	FLAG_MLEN_LL,
+	FLAG_MLEN_L,
+	FLAG_MLEN_J,
+	FLAG_MLEN_Z
 };
 
 typedef struct			s_flag_char
@@ -40,10 +40,11 @@ typedef struct			s_flag_char
 typedef struct			s_format
 {
 	int					fieldwidth;
-	int					precison;
+	int					precision;
 	t_flag_char			flag_char;
-	enum e_flag_len		flag_len;
-	char				flag_convert;
+	enum e_flag_mlen	flag_mlen;
+	//char				mlen[3];
+	char				convch;
 }						t_format;
 
 typedef struct			s_print
@@ -53,7 +54,6 @@ typedef struct			s_print
 	va_list				*args;
 	const char 			*format;
 	int					ret;
-
 }						t_print;
 
 int		ft_printf(const char *format, ...);

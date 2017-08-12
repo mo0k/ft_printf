@@ -6,13 +6,23 @@
 #    By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/31 09:06:42 by mo0ky             #+#    #+#              #
-#    Updated: 2017/08/05 00:10:21 by mo0ky            ###   ########.fr        #
+#    Updated: 2017/08/09 14:38:12 by mo0ky            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-CFLAGS = -Wall -Werror -Wextra
+ifdef FLAGS
+	ifeq ($(FLAGS), no)
+		CFLAGS=
+	endif
+	ifeq ($(FLAGS), debug)
+		CFLAGS= -Wall -Wextra -Werror -ansi -pedantic -g
+	endif
+else
+	CFLAGS = -Wall -Wextra -Werror
+endif
+
 CC = gcc $(CFLAGS)
 
 INC_PATH = includes
