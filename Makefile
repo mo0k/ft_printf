@@ -6,7 +6,7 @@
 #    By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/31 09:06:42 by mo0ky             #+#    #+#              #
-#    Updated: 2017/08/09 14:38:12 by mo0ky            ###   ########.fr        #
+#    Updated: 2017/09/16 23:59:34 by mo0ky            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,34 @@ CC = gcc $(CFLAGS)
 
 INC_PATH = includes
 
-INCS = $(INC_PATH)/ft_printf.h
+INCS = $(INC_PATH)/ft_printf.h 	\
+		$(INC_PATH)/ft_printf.h
 
 SRCS_PATH = sources
 SRCS =	$(SRCS_PATH)/ft_printf.c		\
 		$(SRCS_PATH)/init.c				\
-		$(SRCS_PATH)/format_string.c
+		$(SRCS_PATH)/format_string.c 	\
+		$(SRCS_PATH)/do_filler.c 		\
+		$(SRCS_PATH)/color.c 		\
+		$(SRCS_PATH)/convch/parser.c			\
+		$(SRCS_PATH)/convch/init_var/fmt.c		\
+		$(SRCS_PATH)/convch/init_var/signed.c	\
+		$(SRCS_PATH)/convch/init_var/unsigned.c	\
+		$(SRCS_PATH)/convch/init_var/wchar1.c	\
+		$(SRCS_PATH)/convch/convert/tools/do_preci_and_fill.c	\
+		$(SRCS_PATH)/convch/convert/tools/do_sign.c	\
+		$(SRCS_PATH)/convch/convert/tools/do_space.c	\
+		$(SRCS_PATH)/convch/convert/tools/fix_counter.c	\
+		$(SRCS_PATH)/convch/convert/tools/more_speed.c	\
+		$(SRCS_PATH)/convch/convert/char.c		\
+		$(SRCS_PATH)/convch/convert/string.c	\
+		$(SRCS_PATH)/convch/convert/wchar.c		\
+		$(SRCS_PATH)/convch/convert/wstring.c	\
+		$(SRCS_PATH)/convch/convert/uint.c		\
+		$(SRCS_PATH)/convch/convert/int.c		\
+		$(SRCS_PATH)/convch/convert/hexa.c		\
+		$(SRCS_PATH)/convch/convert/octal.c		\
+		$(SRCS_PATH)/convch/convert/no_convert.c
 
 LIB_PATH = libft
 LIB = $(LIB_PATH)/libft.a

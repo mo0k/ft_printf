@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/31 08:50:33 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/08/11 23:52:38 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/16 12:03:20 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,38 @@
 
 #include <stdarg.h>
 #include <unistd.h>
+#include <wchar.h>
 #include <libft.h>
+#include <fmt.h>
 
-#define FLAG_CHAR "#0-+ "
-#define FLAG_CONVERT "sSpdDioOuUxXcC"
-
-enum e_flag_mlen
+typedef struct s_colors
 {
-	FLAG_MLEN_NODEF,
-	FLAG_MLEN_HH,
-	FLAG_MLEN_H,
-	FLAG_MLEN_LL,
-	FLAG_MLEN_L,
-	FLAG_MLEN_J,
-	FLAG_MLEN_Z
-};
+	char color[COLOR_LEN];
+	char *value;
+}				t_colors;
 
-typedef struct			s_flag_char
-{
-	char				key[5];
-	int					flag[5];
-}						t_flag_char;
-
-typedef struct			s_format
-{
-	int					fieldwidth;
-	int					precision;
-	t_flag_char			flag_char;
-	enum e_flag_mlen	flag_mlen;
-	//char				mlen[3];
-	char				convch;
-}						t_format;
+typedef void	(*t_convfunc)(t_fmt*, t_buffer_static*, va_list*, int*);
 
 typedef struct			s_print
 {
 	t_buffer_static		sbuff;
 	t_buffer_malloc		mbuff;
-	va_list				*args;
+	t_fmt				fmt_flag;
+	va_list				args;
 	const char 			*format;
+	t_convfunc			convfunc[16];
 	int					ret;
 }						t_print;
 
 int		ft_printf(const char *format, ...);
 int		init(t_print *print, const char *format);
-int		do_format(char *format_string, t_buffer_malloc *mbuff, va_list *args);
+int		do_fmt(char *format_string, t_print *print);
+int		do_convch(t_fmt *fmt, t_print *print);
+int		do_filler(t_buffer_static *sbuff, void *str, size_t size);
+int		do_filler_n(t_buffer_static *sbuff, void *c, size_t n);
+int		do_filler_wstr(t_buffer_static *sbuff, wchar_t *wstr, size_t n);
+char	*add_color(char *ptr, t_buffer_static *sbuff);
+
+
 
 #endif
