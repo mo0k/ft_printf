@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/31 08:50:33 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 12:39:00 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 16:52:09 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int						g_fd;
 
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
-int		vprintf(const char * restrict format, va_list ap);
-int		vdprintf(int fd, const char * restrict format, va_list ap);
+int		ft_vprintf(const char * restrict format, va_list ap);
+int		ft_vdprintf(int fd, const char * restrict format, va_list ap);
 
 int		analyze_format(t_print *print, const char *format);
 int				get_format(char **begin, t_print *print);

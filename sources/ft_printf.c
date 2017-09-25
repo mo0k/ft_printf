@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 17:07:12 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 12:38:55 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 16:56:42 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int 	ft_dprintf(int fd, const char *format, ...)
 	return (print.ret);
 }
 
-int		vprintf(const char * restrict format, va_list ap)
+int		ft_vprintf(const char * restrict format, va_list ap)
 {
 	t_print			print;
 
@@ -59,7 +59,7 @@ int		vprintf(const char * restrict format, va_list ap)
 	return (print.ret);
 }
 
-int		vdprintf(int fd, const char * restrict format, va_list ap)
+int		ft_vdprintf(int fd, const char * restrict format, va_list ap)
 {
 	t_print			print;
 
