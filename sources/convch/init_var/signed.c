@@ -6,142 +6,139 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 23:23:27 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/18 22:36:27 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/24 18:35:45 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <stdio.h>
-static char	*itoa_base(char test[65], int value, int base, int *len)
-{
-	long	lvalue = (long)value;
-	static char	hex[] = "0123456789abcdef";
 
-	test += 64;
-	*test = '\0';
+static char		*itoa_base(char nb[65], int value, int base, int *len)
+{
+	long			lvalue;
+	static char		hex[] = "0123456789abcdef";
+
+	lvalue = (long)value;
+	nb += 64;
+	*nb = '\0';
 	if (value == 0)
 	{
 		*len = 1;
-		--test;
-		*test = '0';
-		return (test);
-	}
-	if (value < 0)
-		lvalue *= -1;
-
-	while (lvalue)
-	{
-		++(*len);
-		--test;
-		*test = hex[lvalue % base];	
-		//printf("char:%c\n", *test);
-		lvalue /= base;
-	}
-	//printf("final:%s\n", test);
-	return (test);
-	return (test);
-}
-
-static char	*iltoa_base(char test[65], long value, int base, int *len)
-{
-	long long	lvalue = (long long)value;
-	static char	hex[] = "0123456789abcdef";
-
-	test += 64;
-	*test = '\0';
-	if (value == 0)
-	{
-		*len = 1;
-		--test;
-		*test = '0';
-		return (test);
-	}
-	if (value < 0)
-		lvalue *= -1;
-
-	while (lvalue)
-	{
-		++(*len);
-		--test;
-		*test = hex[lvalue % base];	
-		lvalue /= base;
-	}
-	return (test);
-}
-
-static char	*illtoa_base(char test[65], long long value, int base, int *len)
-{
-	unsigned long long	lvalue = (unsigned long long)value;
-	static char	hex[] = "0123456789abcdef";
-
-	test += 64;
-	*test = '\0';
-	if (value == 0)
-	{
-		*len = 1;
-		--test;
-		*test = '0';
-		return (test);
+		--nb;
+		*nb = '0';
+		return (nb);
 	}
 	if (value < 0)
 		lvalue *= -1;
 	while (lvalue)
 	{
 		++(*len);
-		--test;
-		*test = hex[lvalue % base];	
+		--nb;
+		*nb = hex[lvalue % base];
 		lvalue /= base;
 	}
-	return (test);
+	return (nb);
 }
 
-static long long get_nbr(int flag_mlen, va_list *args)
+static char		*iltoa_base(char nb[65], long value, int base, int *len)
 {
-	if (flag_mlen < FLAG_MLEN_L)
+	static char		hex[] = "0123456789abcdef";
+	t_llint			lvalue;
+
+	lvalue = (t_llint)value;
+	nb += 64;
+	*nb = '\0';
+	if (value == 0)
 	{
-		if (flag_mlen == FLAG_MLEN_NODEF)
-			return((int)va_arg(*args, long long int));
-		else if (flag_mlen == FLAG_MLEN_HH)
-			return((signed char)va_arg(*args, long long int));
+		*len = 1;
+		--nb;
+		*nb = '0';
+		return (nb);
+	}
+	if (value < 0)
+		lvalue *= -1;
+	while (lvalue)
+	{
+		++(*len);
+		--nb;
+		*nb = hex[lvalue % base];
+		lvalue /= base;
+	}
+	return (nb);
+}
+
+static char		*illtoa_base(char nb[65], t_llint value, int base, int *len)
+{
+	static char		hex[] = "0123456789abcdef";
+	t_ullint		lvalue;
+
+	lvalue = (t_ullint)value;
+	nb += 64;
+	*nb = '\0';
+	if (value == 0)
+	{
+		*len = 1;
+		--nb;
+		*nb = '0';
+		return (nb);
+	}
+	if (value < 0)
+		lvalue *= -1;
+	while (lvalue)
+	{
+		++(*len);
+		--nb;
+		*nb = hex[lvalue % base];
+		lvalue /= base;
+	}
+	return (nb);
+}
+
+static t_llint	get_nbr(int flag_mlen, va_list *args)
+{
+	if (flag_mlen < flag_mlen_l)
+	{
+		if (flag_mlen == flag_mlen_nodef)
+			return((int)va_arg(*args, t_llint));
+		else if (flag_mlen == flag_mlen_hh)
+			return((signed char)va_arg(*args, t_llint));
 		else
-			return((short int)va_arg(*args, long long int));
+			return((short int)va_arg(*args, t_llint));
 	}
 	else
 	{
-		if (flag_mlen == FLAG_MLEN_L)
-			return((long int)va_arg(*args, long long int));
-		else if (flag_mlen == FLAG_MLEN_LL)
-			return((long long int)va_arg(*args, long long int));
-		else if (flag_mlen == FLAG_MLEN_Z)
-			return((long long int)va_arg(*args, size_t));
+		if (flag_mlen == flag_mlen_l)
+			return((t_lint)va_arg(*args, t_llint));
+		else if (flag_mlen == flag_mlen_ll)
+			return((t_llint)va_arg(*args, t_llint));
+		else if (flag_mlen == flag_mlen_z)
+			return((t_llint)va_arg(*args, size_t));
 		else
-			return((long long int)va_arg(*args, intmax_t));
+			return((t_llint)va_arg(*args, intmax_t));
 	}
 }
-char	*init_var_signed(t_fmt *fmt, va_list *args, char nb[65], int base)
+
+char			*init_nbr(t_fmt *fmt, va_list *args, char nb[65], int base)
 {
 	fmt->type.ll = get_nbr(fmt->flag_mlen, args);
-	//printf("nb:%lld\n", fmt->type.ll);
 	fmt->len = 0;
-
-	if (fmt->flag_mlen < FLAG_MLEN_L)
+	if (fmt->flag_mlen < flag_mlen_l)
 	{
-		if (fmt->flag_mlen == FLAG_MLEN_NODEF)
+		if (fmt->flag_mlen == flag_mlen_nodef)
 			return(itoa_base(nb, (int)fmt->type.ll, base, &fmt->len));
-		else if (fmt->flag_mlen == FLAG_MLEN_HH)
+		else if (fmt->flag_mlen == flag_mlen_hh)
 			return(itoa_base(nb, (signed char)fmt->type.ll, base, &fmt->len));
-		else if (fmt->flag_mlen == FLAG_MLEN_H)
+		else if (fmt->flag_mlen == flag_mlen_h)
 			return(itoa_base(nb, (short int)fmt->type.ll, base, &fmt->len));
 	}
 	else
 	{
-		if (fmt->flag_mlen == FLAG_MLEN_L)
+		if (fmt->flag_mlen == flag_mlen_l)
 			return(iltoa_base(nb, (long)fmt->type.ll, base, &fmt->len));
-		else if (fmt->flag_mlen == FLAG_MLEN_LL)
+		else if (fmt->flag_mlen == flag_mlen_ll)
 			return(illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
-		else if (fmt->flag_mlen == FLAG_MLEN_Z)
+		else if (fmt->flag_mlen == flag_mlen_z)
 			return(illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
-		else if (fmt->flag_mlen == FLAG_MLEN_J)
+		else if (fmt->flag_mlen == flag_mlen_j)
 			return(illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
 	}
 	return (NULL);

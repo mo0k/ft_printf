@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 23:18:38 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/15 23:19:27 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/24 18:48:02 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int		init_fmt(t_fmt *fmt)
 		return (0);
 	fmt->width = -1;
 	fmt->precision = -1;
-	//init_flag_char(&fmt->flag_char);
-	fmt->flag_mlen = FLAG_MLEN_NODEF;
+	fmt->flag_mlen = flag_mlen_nodef;
 	fmt->convch = 0;
 	fmt->len = 0;
 	fmt->flag_char[0] = 0;
@@ -36,8 +35,7 @@ int		init_fmt_spec(t_fmt *fmt, char convch)
 		return (0);
 	fmt->width = -1;
 	fmt->precision = -1;
-	//init_flag_char(&fmt->flag_char);
-	fmt->flag_mlen = FLAG_MLEN_NODEF;
+	fmt->flag_mlen = flag_mlen_nodef;
 	fmt->convch = convch;
 	fmt->len = 0;
 	fmt->flag_char[0] = 0;

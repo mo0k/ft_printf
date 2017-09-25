@@ -6,24 +6,24 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:28:35 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/18 00:22:51 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/24 18:38:46 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void	convert_uint(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
+void	convert_uint(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, \
+																	int *ret)
 {
-	int nbrlen;
-	int state;
-	char test[65];
-	char *ptr;
+	int		nbrlen;
+	int		state;
+	char	test[65];
+	char	*ptr;
 
 	state = 0;
-	if (!(ptr = init_var_unsigned(fmt, args, test, 10)))
+	if (!(ptr = init_unbr(fmt, args, test, 10)))
 		return ;
 	nbrlen = fmt->len;
-
 	if (fmt->flag_char[2])
 		*ret = do_preci_and_fill(fmt, sbuff, ptr, 0);
 	if (fmt->width > fmt->precision)

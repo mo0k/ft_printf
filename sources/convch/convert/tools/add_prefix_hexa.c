@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_space.c                                         :+:      :+:    :+:   */
+/*   add_prefix_hexa.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/16 11:08:00 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/24 22:52:51 by mo0ky            ###   ########.fr       */
+/*   Created: 2017/09/25 00:30:11 by mo0ky             #+#    #+#             */
+/*   Updated: 2017/09/25 00:31:12 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void	do_space(t_buffer_static *sbuff, int width, int *nbrlen, int *ret)
+int		add_prefix_hexa(t_buffer_static *sbuff, char convch, int *len)
 {
-	if (!sbuff || !nbrlen || !ret)
-		return ;
-	*ret += do_filler(sbuff, " ", 1);
-	if (width > -1)
-		(*nbrlen)++;
+	char	c[2];
+
+	*len += 2;
+	c[0] = '0';
+	c[1] = (convch == 'p') ? 'x' : convch;
+	return (do_filler(sbuff, c, 2));
 }

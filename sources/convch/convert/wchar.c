@@ -6,33 +6,23 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 00:35:29 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/19 18:03:26 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 10:54:59 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void convert_wchar(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
+void			convert_wchar(t_fmt *fmt, t_buffer_static *sbuff,
+														va_list *args, int *ret)
 {
-	//printf("DEBUG convert_wchar\n");
-	//(void)args;
-	//unsigned int e;
-	unsigned char c[5];
+	unsigned char	c[5];
 
 	fmt->type.wchar = va_arg(*args, wchar_t);
 	if (fmt->type.wchar < 0)
-	{
-		*ret = -1;
-		//printf("par la ret -1\n");
-		return ;
-	}
-	//fmt->len = fmt->type.wchar ? 1 : 0;
+		return (ret_error(ret));
 	fmt->len = 1;
 	if (!init_wchar(c, fmt->type.wchar, &fmt->len))
-	{
-		*ret = -1;
-		return;
-	}
+		return (ret_error(ret));
 	if (fmt->width > -1)
 	{
 		if (fmt->flag_char[2])
