@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 23:23:27 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/24 18:34:18 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 22:46:54 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char				*uitoa_return_null(char *nb, int *len, int base)
 	return (nb);
 }
 
-static char			*uitoa_base(char nb[65], t_uint value, int base, int *len)
+static char			*uitoa_base(char nb[128], t_uint value, int base, int *len)
 {
 	static char		hex[] = "0123456789abcdef";
 	t_ulint			lvalue;
@@ -44,7 +44,7 @@ static char			*uitoa_base(char nb[65], t_uint value, int base, int *len)
 
 	lvalue = (t_ulint)value;
 	i = 0;
-	nb += 64;
+	nb += 127;
 	*nb = '\0';
 	if (value == 0)
 		return (uitoa_return_null(nb, len, base));
@@ -63,7 +63,7 @@ static char			*uitoa_base(char nb[65], t_uint value, int base, int *len)
 	return (nb);
 }
 
-static char			*uiltoa_base(char nb[65], t_ulint value, int base, int *len)
+static char			*uiltoa_base(char nb[128], t_ulint value, int base, int *len)
 {
 	static char		hex[] = "0123456789abcdef";
 	t_ullint		lvalue;
@@ -71,7 +71,7 @@ static char			*uiltoa_base(char nb[65], t_ulint value, int base, int *len)
 
 	lvalue = (t_ullint)value;
 	i = 0;
-	nb += 64;
+	nb += 127;
 	*nb = '\0';
 	if (value == 0)
 		return (uitoa_return_null(nb, len, base));
@@ -90,7 +90,7 @@ static char			*uiltoa_base(char nb[65], t_ulint value, int base, int *len)
 	return (nb);
 }
 
-static char			*uilltoa_base(char nb[65], t_ullint value, int base, int *len)
+static char			*uilltoa_base(char nb[128], t_ullint value, int base, int *len)
 {
 	static char		hex[] = "0123456789abcdef";
 	t_ullint		lvalue;
@@ -98,7 +98,7 @@ static char			*uilltoa_base(char nb[65], t_ullint value, int base, int *len)
 
 	lvalue = (t_ullint)value;
 	i = 0;
-	nb += 64;
+	nb += 127;
 	*nb = '\0';
 	if (value == 0)
 		return (uitoa_return_null(nb, len, base));
@@ -141,7 +141,7 @@ static t_ullint		get_nbr(int flag_mlen, va_list *args)
 	}
 }
 
-char			*init_unbr(t_fmt *fmt, va_list *args, char nb[65], int base)
+char			*init_unbr(t_fmt *fmt, va_list *args, char nb[128], int base)
 {
 	fmt->type.ull = get_nbr(fmt->flag_mlen, args);
 	fmt->len = 0;

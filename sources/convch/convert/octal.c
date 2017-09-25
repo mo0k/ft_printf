@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:28:49 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 11:48:12 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 22:51:00 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		add_zero(char **ptr, int *len)
 void			convert_octal(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
 {
 	int		nbrlen;
-	char	test[65];
+	char	test[128];
 	char	*ptr;
 	int		diff;
 

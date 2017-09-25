@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 11:53:58 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 11:48:01 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 22:47:31 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #define FLAG_CHAR "#0-+ "
 #define FLAG_CONVERT "sSpdDioOuUxXcCb%"
+//#define FLAG_CONVERT "%CDOSUXbcdiopsux"
 #define BUFF_SIZE_TEMP 1024
 #define TAB_COLOR_LEN 17
 #define COLOR_LEN 10
@@ -56,8 +57,8 @@ typedef struct			s_fmt
 }						t_fmt;
 
 int		parse_fmt(t_fmt *fmt, char *fmt_string);
-char	*init_nbr(t_fmt *fmt, va_list *args, char nb[65], int base);
-char	*init_unbr(t_fmt *fmt, va_list *args, char nb[65], int base);
+char	*init_nbr(t_fmt *fmt, va_list *args, char nb[128], int base);
+char	*init_unbr(t_fmt *fmt, va_list *args, char nb[128], int base);
 int		init_fmt(t_fmt *fmt);
 int		init_fmt_spec(t_fmt *fmt, char convch);
 int		init_wchar(t_uchar *buff, wchar_t c, int *len);

@@ -6,19 +6,19 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 23:23:27 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/24 18:35:45 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 22:47:17 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-static char		*itoa_base(char nb[65], int value, int base, int *len)
+static char		*itoa_base(char nb[128], int value, int base, int *len)
 {
 	long			lvalue;
 	static char		hex[] = "0123456789abcdef";
 
 	lvalue = (long)value;
-	nb += 64;
+	nb += 127;
 	*nb = '\0';
 	if (value == 0)
 	{
@@ -39,13 +39,13 @@ static char		*itoa_base(char nb[65], int value, int base, int *len)
 	return (nb);
 }
 
-static char		*iltoa_base(char nb[65], long value, int base, int *len)
+static char		*iltoa_base(char nb[128], long value, int base, int *len)
 {
 	static char		hex[] = "0123456789abcdef";
 	t_llint			lvalue;
 
 	lvalue = (t_llint)value;
-	nb += 64;
+	nb += 127;
 	*nb = '\0';
 	if (value == 0)
 	{
@@ -66,13 +66,13 @@ static char		*iltoa_base(char nb[65], long value, int base, int *len)
 	return (nb);
 }
 
-static char		*illtoa_base(char nb[65], t_llint value, int base, int *len)
+static char		*illtoa_base(char nb[128], t_llint value, int base, int *len)
 {
 	static char		hex[] = "0123456789abcdef";
 	t_ullint		lvalue;
 
 	lvalue = (t_ullint)value;
-	nb += 64;
+	nb += 127;
 	*nb = '\0';
 	if (value == 0)
 	{
@@ -117,7 +117,7 @@ static t_llint	get_nbr(int flag_mlen, va_list *args)
 	}
 }
 
-char			*init_nbr(t_fmt *fmt, va_list *args, char nb[65], int base)
+char			*init_nbr(t_fmt *fmt, va_list *args, char nb[128], int base)
 {
 	fmt->type.ll = get_nbr(fmt->flag_mlen, args);
 	fmt->len = 0;

@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:28:38 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/24 22:39:35 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 22:50:58 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	convert_int(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
 {
 	int		nbrlen;
 	int		state;
-	char	test[65];
+	char	test[128];
 	char	*ptr;
 
 	state = 0;

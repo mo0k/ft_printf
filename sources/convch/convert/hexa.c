@@ -6,7 +6,7 @@
 /*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:28:45 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 10:51:13 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/09/25 22:50:57 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int		fix_diff(t_fmt *fmt, char *ptr, int *diff)
 	return (1);
 }
 
-static char		*init_ptr(t_fmt *fmt, va_list *args, char nb[65])
+static char		*init_ptr(t_fmt *fmt, va_list *args, char nb[128])
 {
 	char	*ptr;
 
@@ -59,7 +59,7 @@ void 			convert_hexa(t_fmt *fmt, t_buffer_static *sbuff, \
 													va_list *args, int *ret)
 {
 	int		nbrlen;
-	char	nb[65];
+	char	nb[128];
 	char	*ptr;
 
 	ptr = init_ptr(fmt, args, nb);
