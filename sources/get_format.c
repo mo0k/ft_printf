@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_format.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/25 11:18:04 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:44:09 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:24:16 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int		check_format(char **aptr)
 	return (0);
 }
 
-static int 		exit_format(char **begin, char *end, int ret)
+static int		exit_format(char **begin, char *end, int ret)
 {
 	*begin = end;
 	return (ret);
@@ -57,7 +57,7 @@ int				get_format(char **begin, t_print *print)
 {
 	char	tmp[BUFF_SIZE_TEMP];
 	char	*end;
-	int 	diff;
+	int		diff;
 
 	if (!begin || !*begin)
 		return (0);
@@ -69,7 +69,7 @@ int				get_format(char **begin, t_print *print)
 	if (diff > BUFF_SIZE_TEMP)
 		return (exit_format(begin, end, 0));
 	ft_strncpy(tmp, *begin, diff);
-		tmp[diff] = 0;
+	tmp[diff] = 0;
 	if (do_fmt(tmp, print) == -1)
 		return (exit_format(begin, end + 1, -1));
 	*begin = end;

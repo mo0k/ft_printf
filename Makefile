@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+         #
+#    By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/31 09:06:42 by mo0ky             #+#    #+#              #
-#    Updated: 2017/09/25 11:51:44 by mo0ky            ###   ########.fr        #
+#    Updated: 2017/10/01 22:08:09 by jmoucade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,9 @@ CC = gcc $(CFLAGS)
 
 INC_PATH = includes
 
-INCS = $(INC_PATH)/ft_printf.h 	\
-		$(INC_PATH)/fmt.h
+INCS = $(INC_PATH)/ft_printf.h	\
+		$(INC_PATH)/fmt.h		\
+		$(INC_PATH)/fmt_types.h
 
 SRCS_PATH = sources
 SRCS =	$(SRCS_PATH)/ft_printf.c		\
@@ -42,7 +43,7 @@ SRCS =	$(SRCS_PATH)/ft_printf.c		\
 		$(SRCS_PATH)/convch/init_var/signed.c	\
 		$(SRCS_PATH)/convch/init_var/unsigned.c	\
 		$(SRCS_PATH)/convch/init_var/wchar1.c	\
-		$(SRCS_PATH)/convch/convert/tools/add_prefix_hexa.c	\
+		$(SRCS_PATH)/convch/convert/tools/utils_unsigned.c	\
 		$(SRCS_PATH)/convch/convert/tools/do_preci_and_fill.c	\
 		$(SRCS_PATH)/convch/convert/tools/do_sign.c	\
 		$(SRCS_PATH)/convch/convert/tools/do_space.c	\
@@ -83,23 +84,16 @@ $(LIB):
 
 %.o: %.c
 	@$(CC) -I $(INC_PATH) -I $(LIB_PATH)/$(INC_PATH) -c -o $@ $<
-	@$(ECHO) 'Linking' $@
-	@echo  ".........."$(C_LGREEN)✓$(C_DFL)
+	@echo "Linking file" $@
 
 clean: 
-	@make clean -C $(LIB_PATH) 
-	@for i in $(OBJS); \
-	do if [ -e $$i ]; \
-		then echo 'Deleting' $$i  ".........."$(C_RED)✗$(C_DFL);\
-			/bin/rm -f $$i; \
-		fi; \
-	done
-	@echo $(C_LRED)"Objects files deleted."$(C_DFL)
+	@make clean -C $(LIB_PATH)
+	@/bin/rm -f $(OBJS)
 
 fclean: clean
 	@make fclean -C $(LIB_PATH)
 	@/bin/rm -f $(NAME)
-	@echo $(C_RED)"Librairy $(NAME) deleted."$(C_DFL)
+	@echo $(C_RED)"Delete $(NAME)."$(C_DFL)
 
 re: fclean all
 

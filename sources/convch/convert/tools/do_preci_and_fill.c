@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   do_preci_and_fill.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:52:26 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 01:12:55 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 23:02:40 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int			do_preci_and_fill(t_fmt *fmt, t_buffer_static *sbuff, char *val, char sign)
+int			do_preci_and_fill(t_fmt *fmt, t_buffer_static *sbuff, char *val, \
+																	char sign)
 {
 	t_llint		nb;
 	int			ret;
@@ -28,7 +29,8 @@ int			do_preci_and_fill(t_fmt *fmt, t_buffer_static *sbuff, char *val, char sign
 	return (do_filler(sbuff, val, fmt->len) + ret);
 }
 
-int			do_preci_and_fill_spec(t_fmt *fmt, t_buffer_static *sbuff, char *val)
+int			do_preci_and_fill_spec(t_fmt *fmt, t_buffer_static *sbuff, \
+																	char *val)
 {
 	t_llint		nb;
 	int			ret;
@@ -44,11 +46,12 @@ int			do_preci_and_fill_spec(t_fmt *fmt, t_buffer_static *sbuff, char *val)
 	return (do_filler(sbuff, val, fmt->len) + ret);
 }
 
-int			do_preci_and_fill_spec2(t_fmt *fmt, t_buffer_static *sbuff, char *val)
+int			do_preci_and_fill_spec2(t_fmt *fmt, t_buffer_static *sbuff, \
+																	char *val)
 {
 	t_llint		nb;
 	int			ret;
-	
+
 	if (!fmt || !sbuff)
 		return (0);
 	ret = 0;

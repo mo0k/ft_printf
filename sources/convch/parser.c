@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 23:22:05 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/24 18:39:37 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:31:25 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static enum e_flag_mlen	is_flag_mlen(char *ptr)
 	return (flag_mlen_nodef);
 }
 
-static void 			set_flag_char(int flag_char[5], char *ptr)
+static void				set_flag_char(int flag_char[5], char *ptr)
 {
 	int				i;
 
@@ -46,7 +46,7 @@ static void 			set_flag_char(int flag_char[5], char *ptr)
 	}
 }
 
-static void 			set_width(int *width, char **aptr)
+static void				set_width(int *width, char **aptr)
 {
 	char			c;
 	char			*start;
@@ -72,7 +72,7 @@ static void				set_precision(int *precision, char **aptr)
 {
 	char			c;
 	char			*start;
-	char 			*tmp;
+	char			*tmp;
 
 	if (!precision || !aptr || !*aptr)
 		return ;
@@ -97,9 +97,9 @@ static void				set_precision(int *precision, char **aptr)
 		--(*aptr);
 }
 
-int						parse_fmt(t_fmt *fmt, char *fmt_string)
+int						parse_fmt(t_fmt *f, char *fmt_string)
 {
-	unsigned int 	temp;
+	unsigned int	temp;
 
 	if (!fmt_string)
 		return (0);
@@ -108,17 +108,17 @@ int						parse_fmt(t_fmt *fmt, char *fmt_string)
 	while (*fmt_string)
 	{
 		if (ft_strchr(FLAG_CHAR, *fmt_string))
-			set_flag_char(fmt->flag_char, fmt_string);
+			set_flag_char(f->flag_char, fmt_string);
 		else if (*fmt_string == '.')
-			set_precision(&fmt->precision, &fmt_string);
+			set_precision(&f->precision, &fmt_string);
 		else if (ft_isdigit(*fmt_string))
-			set_width(&fmt->width, &fmt_string);
+			set_width(&f->width, &fmt_string);
 		else if (*fmt_string && !*(fmt_string + 1))
-			fmt->convch = *fmt_string;
-		else if ((temp = is_flag_mlen(fmt_string)) > fmt->flag_mlen)
+			f->convch = *fmt_string;
+		else if ((temp = is_flag_mlen(fmt_string)) > f->flag_mlen)
 		{
-			fmt->flag_mlen = temp;
-			if (fmt->flag_mlen == flag_mlen_ll || fmt->flag_mlen == flag_mlen_hh)
+			f->flag_mlen = temp;
+			if (f->flag_mlen == flag_mlen_ll || f->flag_mlen == flag_mlen_hh)
 				++fmt_string;
 		}
 		++fmt_string;

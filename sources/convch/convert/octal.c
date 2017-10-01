@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   octal.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:28:49 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:51:00 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 23:02:18 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void		add_zero(char **ptr, int *len)
 	++*len;
 }
 
-void			convert_octal(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
+void			convert_octal(t_fmt *fmt, t_buffer_static *sbuff, \
+														va_list *args, int *ret)
 {
 	int		nbrlen;
 	char	test[128];
@@ -42,7 +43,7 @@ void			convert_octal(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret
 	}
 	*ret += (fmt->flag_char[2]) ? do_preci_and_fill_spec2(fmt, sbuff, ptr) : 0;
 	if (fmt->width > fmt->precision)
-		if ((diff = fmt->width - fix_count_unsigned1(fmt, nbrlen, ptr)) >= 0)
+		if ((diff = fmt->width - fix_count_unsigned(fmt, nbrlen, ptr)) >= 0)
 			*ret += (fmt->flag_char[1] && fmt->precision == -1) ?
 											do_filler_n(sbuff, "0", diff) :
 											do_filler_n(sbuff, " ", diff);

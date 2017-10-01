@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_filler.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 00:13:52 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 11:09:47 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:24:55 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int			do_filler_n(t_buffer_static *sbuff, void *c, size_t n)
 	return (ret);
 }
 
-int		do_filler_wstr(t_buffer_static *sbuff, wchar_t *wstr, size_t n)
+int			do_filler_wstr(t_buffer_static *sbuff, wchar_t *wstr, size_t n)
 {
 	unsigned char	c[5];
 	int				len;
@@ -117,7 +117,7 @@ int		do_filler_wstr(t_buffer_static *sbuff, wchar_t *wstr, size_t n)
 		if (!init_wchar(c, wstr[i], &len))
 			return (-1);
 		if (j + len > n)
-			break;
+			break ;
 		ret += do_filler(sbuff, c, len);
 		j += len;
 		++i;

@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   binary.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:28:38 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:50:56 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:48:55 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void convert_binary(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
+void	convert_binary(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, \
+																	int *ret)
 {
-	int nbrlen;
-	int state;
-	char test[128];
-	char *ptr;
-	int diff;
+	int		nbrlen;
+	int		state;
+	char	nb[128];
+	char	*ptr;
+	int		diff;
 
 	state = 0;
-	if (!(ptr = init_unbr(fmt, args, test, 2)))
+	if (!(ptr = init_unbr(fmt, args, nb, 2)))
 		return ;
 	nbrlen = fmt->len;
 	if (fmt->flag_char[4] && fmt->type.ll >= 0)

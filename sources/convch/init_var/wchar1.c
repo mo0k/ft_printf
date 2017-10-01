@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wchar1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 00:00:40 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:50:48 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:35:11 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	fill_wchar(unsigned char *ret, wchar_t c, int len)
 	ret[len] = 0;
 }
 
-int init_wchar(unsigned char *ret, wchar_t c, int *len)
+int			init_wchar(unsigned char *ret, wchar_t c, int *len)
 {
 	if (MB_CUR_MAX == 1)
 	{

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   no_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 20:48:36 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:50:59 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:48:10 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void 	noconvert(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
+void	noconvert(t_fmt *fmt, t_buffer_static *sbuff, va_list *args, int *ret)
 {
 	int		len;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signed.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 23:23:27 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:47:17 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:31:04 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,22 +98,22 @@ static t_llint	get_nbr(int flag_mlen, va_list *args)
 	if (flag_mlen < flag_mlen_l)
 	{
 		if (flag_mlen == flag_mlen_nodef)
-			return((int)va_arg(*args, t_llint));
+			return ((int)va_arg(*args, t_llint));
 		else if (flag_mlen == flag_mlen_hh)
-			return((signed char)va_arg(*args, t_llint));
+			return ((signed char)va_arg(*args, t_llint));
 		else
-			return((short int)va_arg(*args, t_llint));
+			return ((short int)va_arg(*args, t_llint));
 	}
 	else
 	{
 		if (flag_mlen == flag_mlen_l)
-			return((t_lint)va_arg(*args, t_llint));
+			return ((t_lint)va_arg(*args, t_llint));
 		else if (flag_mlen == flag_mlen_ll)
-			return((t_llint)va_arg(*args, t_llint));
+			return ((t_llint)va_arg(*args, t_llint));
 		else if (flag_mlen == flag_mlen_z)
-			return((t_llint)va_arg(*args, size_t));
+			return ((t_llint)va_arg(*args, size_t));
 		else
-			return((t_llint)va_arg(*args, intmax_t));
+			return ((t_llint)va_arg(*args, intmax_t));
 	}
 }
 
@@ -124,22 +124,22 @@ char			*init_nbr(t_fmt *fmt, va_list *args, char nb[128], int base)
 	if (fmt->flag_mlen < flag_mlen_l)
 	{
 		if (fmt->flag_mlen == flag_mlen_nodef)
-			return(itoa_base(nb, (int)fmt->type.ll, base, &fmt->len));
+			return (itoa_base(nb, (int)fmt->type.ll, base, &fmt->len));
 		else if (fmt->flag_mlen == flag_mlen_hh)
-			return(itoa_base(nb, (signed char)fmt->type.ll, base, &fmt->len));
+			return (itoa_base(nb, (signed char)fmt->type.ll, base, &fmt->len));
 		else if (fmt->flag_mlen == flag_mlen_h)
-			return(itoa_base(nb, (short int)fmt->type.ll, base, &fmt->len));
+			return (itoa_base(nb, (short int)fmt->type.ll, base, &fmt->len));
 	}
 	else
 	{
 		if (fmt->flag_mlen == flag_mlen_l)
-			return(iltoa_base(nb, (long)fmt->type.ll, base, &fmt->len));
+			return (iltoa_base(nb, (long)fmt->type.ll, base, &fmt->len));
 		else if (fmt->flag_mlen == flag_mlen_ll)
-			return(illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
+			return (illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
 		else if (fmt->flag_mlen == flag_mlen_z)
-			return(illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
+			return (illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
 		else if (fmt->flag_mlen == flag_mlen_j)
-			return(illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
+			return (illtoa_base(nb, (long long)fmt->type.ll, base, &fmt->len));
 	}
 	return (NULL);
 }

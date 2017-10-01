@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 17:07:12 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 16:56:42 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 22:55:23 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int 	ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	t_print			print;
 
@@ -23,12 +23,12 @@ int 	ft_printf(const char *format, ...)
 	g_fd = 1;
 	va_start(print.args, format);
 	if (!analyze_format(&print, format))
-		return(-1);
+		return (-1);
 	va_end(print.args);
 	return (print.ret);
 }
 
-int 	ft_dprintf(int fd, const char *format, ...)
+int		ft_dprintf(int fd, const char *format, ...)
 {
 	t_print			print;
 
@@ -39,12 +39,12 @@ int 	ft_dprintf(int fd, const char *format, ...)
 	g_fd = fd;
 	va_start(print.args, format);
 	if (!analyze_format(&print, format))
-		return(-1);
+		return (-1);
 	va_end(print.args);
 	return (print.ret);
 }
 
-int		ft_vprintf(const char * restrict format, va_list ap)
+int		ft_vprintf(const char *format, va_list ap)
 {
 	t_print			print;
 
@@ -55,11 +55,11 @@ int		ft_vprintf(const char * restrict format, va_list ap)
 	g_fd = 1;
 	ft_memmove(&print.args, ap, sizeof(va_list));
 	if (!analyze_format(&print, format))
-		return(-1);
+		return (-1);
 	return (print.ret);
 }
 
-int		ft_vdprintf(int fd, const char * restrict format, va_list ap)
+int		ft_vdprintf(int fd, const char *format, va_list ap)
 {
 	t_print			print;
 
@@ -70,6 +70,6 @@ int		ft_vdprintf(int fd, const char * restrict format, va_list ap)
 	g_fd = fd;
 	ft_memmove(&print.args, ap, sizeof(va_list));
 	if (!analyze_format(&print, format))
-		return(-1);
+		return (-1);
 	return (print.ret);
 }

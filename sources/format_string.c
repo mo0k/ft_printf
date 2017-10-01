@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/05 00:06:52 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:37:12 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:28:07 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int				do_convch(t_fmt *fmt, t_print *p)
 {
-	char 				*ptr;
+	char				*ptr;
 	static t_convfunc	convfunc[17] = {
 		&convert_str,
 		&convert_wstr,
@@ -45,13 +45,14 @@ int				do_convch(t_fmt *fmt, t_print *p)
 static void		ajust_fmt(t_fmt *fmt)
 {
 	if (!fmt)
-		return;
+		return ;
 	if (fmt->convch == 'D' || fmt->convch == 'U' || fmt->convch == 'O')
 	{
 		fmt->convch += 32;
 		fmt->flag_mlen = flag_mlen_l;
 	}
-	else if ((fmt->convch == 'c' || fmt->convch == 's' ) && fmt->flag_mlen == flag_mlen_l)
+	else if ((fmt->convch == 'c' || fmt->convch == 's') &&
+											fmt->flag_mlen == flag_mlen_l)
 	{
 		fmt->convch -= 32;
 		fmt->flag_mlen = flag_mlen_nodef;
@@ -62,7 +63,6 @@ static void		ajust_fmt(t_fmt *fmt)
 		fmt->flag_char[1] = 0;
 	if (fmt->flag_char[4] && fmt->flag_char[3])
 		fmt->flag_char[4] = 0;
-
 }
 
 int				do_fmt(char *fmt_string, t_print *print)
