@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fix_counter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 10:53:32 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 10:53:42 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 23:02:01 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,8 @@ int			fix_count_signed(t_fmt *fmt, int nbrlen)
 			return (nbrlen);
 	}
 }
-int			fix_count_unsigned(t_fmt *fmt, int nbrlen)
-{
-	if (!fmt)
-		return (0);
-	if (fmt->precision > fmt->len)
-	{
-		return ((nbrlen > fmt->len || fmt->flag_char[3]) ?
-										fmt->precision + 1 : fmt->precision);
-	}
-	else
-	{
-		if (fmt->flag_char[3])
-			return (fmt->len + 1);
-		else if (fmt->precision == 0 && fmt->type.ull == 0)
-			return (0);
-		else
-			return (nbrlen);
-	}
-}
 
-int			fix_count_unsigned1(t_fmt *fmt, int nbrlen, char *ptr)
+int			fix_count_unsigned(t_fmt *fmt, int nbrlen, char *ptr)
 {
 	if (!fmt)
 		return (0);

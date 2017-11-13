@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analyze_format.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/25 11:18:04 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/25 22:37:19 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:49:37 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		color_text(t_print *print, char **ptr)
 		*ptr = temp;
 }
 
-static void 	go_shortcut(t_print *print, char **ptr)
+static void		go_shortcut(t_print *print, char **ptr)
 {
 	t_fmt	fmt;
 
@@ -51,7 +51,7 @@ static int		do_analyze(t_print *print, char **ptr)
 	else
 	{
 		if (get_format(ptr, print) == -1)
-				return (0);
+			return (0);
 		return (1);
 	}
 }
@@ -75,7 +75,7 @@ int				analyze_format(t_print *print, const char *format)
 			if (*ptr)
 				print->ret += do_filler(&print->sbuff, ptr++, 1);
 			else
-				break;
+				break ;
 		}
 	}
 	write(g_fd, print->sbuff.buffer, print->sbuff.used_size);

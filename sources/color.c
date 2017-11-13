@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 09:53:15 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/09/24 18:43:43 by mo0ky            ###   ########.fr       */
+/*   Updated: 2017/10/01 21:47:54 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_colors		*init_tab_color(void)
 {
 	static t_colors		tab_colors[TAB_COLOR_LEN] = {
 		{"BLACK", C_BLACK},
-		{"RED", C_RED}, 
+		{"RED", C_RED},
 		{"GREEN", C_GREEN},
 		{"YELLOW", C_YELLOW},
 		{"BLUE", C_BLUE},
@@ -69,7 +69,7 @@ char				*add_color(char *ptr, t_buffer_static *sbuff)
 	temp[i] = 0;
 	i = -1;
 	while (temp[++i])
-			temp[i] = ft_toupper(temp[i]);
+		temp[i] = ft_toupper(temp[i]);
 	if (!(color = apply_color(temp, tab_color)))
 		return (NULL);
 	do_filler(sbuff, color, ft_strlen(color));
