@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+         #
+#    By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/31 09:06:42 by mo0ky             #+#    #+#              #
-#    Updated: 2017/10/01 22:08:09 by jmoucade         ###   ########.fr        #
+#    Updated: 2017/11/13 22:48:12 by mo0ky            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,8 +92,10 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LIB_PATH)
+	@if [ -e $(NAME) ]; \
+	then echo $(C_RED)"Delete $(NAME)."$(C_DFL); \
+	fi;
 	@/bin/rm -f $(NAME)
-	@echo $(C_RED)"Delete $(NAME)."$(C_DFL)
 
 re: fclean all
 
