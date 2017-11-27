@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucade <jmoucade@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mo0ky <mo0ky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/31 08:50:33 by mo0ky             #+#    #+#             */
-/*   Updated: 2017/10/01 21:52:25 by jmoucade         ###   ########.fr       */
+/*   Updated: 2017/11/13 19:57:34 by mo0ky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <wchar.h>
 # include <libft.h>
 # include <fmt.h>
+
+# define FALSE 0
+# define TRUE 1
 
 typedef struct		s_colors
 {
